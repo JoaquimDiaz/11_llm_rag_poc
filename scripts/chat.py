@@ -38,9 +38,7 @@ def format_context_markdown(docs):
         url = doc.metadata.get("canonicalurl", "")
         desc = doc.page_content.strip()
 
-        block = f"""### 📅 {title}
-
-**Date**: {date}  
+        block = f"""
 **Lien**: [{url}]({url})  
 
 {desc}
@@ -51,9 +49,9 @@ def format_context_markdown(docs):
 
 def generate_recommendation(input_text: str):
     docs = vector_store.similarity_search(
-       query=input_text,
-       k=3
-    )
+        query=input_text,
+        k=3
+        )
 
     context = "\n\n".join(
         f"""
@@ -68,16 +66,19 @@ def generate_recommendation(input_text: str):
     prompt = f"""
     Tu es un assistant intelligent qui aide à recommander des événements à partir de leurs descriptions.
 
-    Voici une liste d'événements :
+    Voici une liste d'événements susceptible d'intéresser l'utilisateur :
 
     ---------------------
     {context}
     ---------------------
 
-    En te basant uniquement sur ces événements, réponds à la question suivante en français :
+    En te basant uniquement sur ces événements, pas tes connaissances antérieures, réponds à la question suivante en français :
     **{input_text}**
 
     Ta réponse doit être concise, utile et faire référence aux événements les plus pertinents (pas besoin de recopier les descriptions, elles sont déjà affichées à l'utilisateur).
+    
+    Si les événements qui sont dans ta liste ne semblent pas correspondre, ou si la question qui est posé n'est pas pertinente pour un assistant de recommandation d'événements,
+    précise ta mission, et invite les utilisateurs à reposer leur question.
     """
 
     with st.spinner("Génération de la réponse..."):
