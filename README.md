@@ -28,6 +28,18 @@ Ce POC démontre l’usage d’une architecture **Retrieval‑Augmented Generati
 
 ---
 
+## 📊 Schémas d'architecture
+
+Pour mieux comprendre la structure du projet, deux schémas visuels sont disponibles :
+
+### Pipeline d'indexation FAISS
+
+![Pipeline LLM général](/img/p11_llm_pipeline.png)
+
+### Modèle de RAG
+
+![Architecture RAG](/img/p11_llm_RAG.png)
+
 ## ⚙️ Installation
 
 ```bash
