@@ -74,7 +74,7 @@ def build_index(
     logging.info("%i documents added to the vector store.", len(documents))
 
     vector_store.save_local(destination)
-    logging.info("Vector store savec to '%s'.", destination)
+    logging.info("Vector store saved to '%s'.", destination)
 
 def retrieve_id_column_from_df(df: pl.DataFrame, id_column: str) -> list[int]:
     if id_column not in df.columns:
