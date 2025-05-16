@@ -4,4 +4,20 @@ version = "0.1.0"
 description = "Add your description here"
 readme = "README.md"
 requires-python = ">=3.10"
-dependencies = []
+dependencies = [
+    "bs4>=0.0.2",
+    "faiss-cpu>=1.10.0",
+    "ipykernel>=6.29.5",
+    "langchain>=0.3.24",
+    "langchain-community>=0.3.23",
+    "langchain-mistralai>=0.2.10",
+    "mistral>=20.0.0",
+    "mistralai>=1.7.0",
+    "polars>=1.27.1",
+    "pydantic>=2.11.3",
+    "pytest>=8.3.5",
+    "python-dotenv>=1.1.0",
+    "requests>=2.32.3",
+    "streamlit>=1.45.0",
+]
+

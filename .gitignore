@@ -8,3 +8,14 @@ wheels/
 
 # Virtual environments
 .venv
+.env
+
+# Data
+data/
+*.xlsx
+*.index
+*.db
+*.npy
+
+# Other
+/dump
