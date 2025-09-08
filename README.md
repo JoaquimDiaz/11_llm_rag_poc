@@ -63,7 +63,7 @@ Trois scripts facilitent les tâches les plus courantes :
 | ------------ | ---------------------------------------------------------------------------------------- | -------------------------------------------------------- |
 | `build.sh`   | Exécute la collecte (`fetch`) puis l’indexation (`index`) avec les paramètres par défaut | `python -m run fetch && python -m run index `            |
 | `run_app.sh` | Lance l’application Streamlit sur le port 8501 (modifiable)                              | `python -m run app`                                      |
-| `test.sh`    | Lance les tests unitaites pour les scripts/fonctions                                     | `pytest`                                                 |
+| `test.sh`    | Lance les tests unitaires pour les scripts/fonctions                                     | `pytest`                                                 |
 
 ### Exemples rapides
 
@@ -93,7 +93,7 @@ python -m run [-v|-vv|-vvv] <commande> [options]
 
 ### Exemples
 
-1. **Collecter 1 000 événements** de Bratagne pour l’année à venir :
+1. **Collecter 1 000 événements** de Bretagne pour l’année à venir :
 
 ```bash
 python -m rag_poc fetch \
@@ -143,7 +143,7 @@ Rendez‑vous sur [http://localhost:8501](http://localhost:8501) pour tester !
 │   └── chat.py               # Interface Streamlit
 ├── tests/                    # Tests unitaires
 │   └── ...
-├── build.sh                  # Lance la Pipeline complete (fetch → index)
+├── build.sh                  # Lance la Pipeline complète (fetch → index)
 ├── run_app.sh                # Démarre l’app Streamlit
 ├── run.py                    # Entrypoint alternatif (python -m run)
 └── pyproject.toml            # Dépendances & configuration
