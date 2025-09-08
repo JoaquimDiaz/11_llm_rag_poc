@@ -55,6 +55,8 @@ def fetch_data(
     logger.debug("since=%s", since)
     logger.debug("until=%s", until)
     logger.debug("params=%s", params)
+
+    setup_folders()
     
     # ------ 1. Fetching data from the API ------#
 
@@ -84,6 +86,10 @@ def fetch_data(
 
             error_file = config.ERROR_FILE.with_suffix(".jsonl")
 
+            if not error_file.exists():
+                logger.info("Error file does not exist, creating error file: `%s`.", error_file)
+                error_file.touch()
+
             with error_file.open("w", encoding="utf-8") as file:
                 for item in wrong_data_list:
                     json.dump(item, file, ensure_ascii=False, default=str)
@@ -98,6 +104,23 @@ def fetch_data(
 
     df.write_parquet(output_file)
     logger.info("Data saved to '%s'", output_file)
+
+def setup_folders() -> None:
+    """" Make sure the various data folders exist. Create them if missing. """
+    if not config.DATA.exists():
+        logger.warning("DATA folder does not exist.")
+        logger.warning("Creating data folder: `%s`.", config.DATA)
+        config.DATA.mkdir()
+
+    if not config.RAW.exists():
+        logger.warning("RAW folder does not exist.")
+        logger.warning("Creating RAW folder: `%s`.", config.RAW)
+        config.RAW.mkdir()
+
+    if not config.VECTORS_FOLDER.exists():
+        logger.warning("VECTORS_FOLDER folder does not exist.")
+        logger.warning("Creating VECTORS_FOLDER: `%s`.", config.VECTORS_FOLDER)
+        config.VECTORS_FOLDER.mkdir()
 
 def get_json_from_api(
         url: str, 

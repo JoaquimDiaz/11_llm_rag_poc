@@ -41,7 +41,7 @@ class Event(BaseModel):
     @classmethod
     def validate_begin_date(cls, v: datetime) -> datetime:
         since = datetime.now(v.tzinfo) - timedelta(config.SINCE)
-        if v < datetime.now(v.tzinfo):
+        if v < since:
             raise ValueError("Date must not be more than one year old.")
         return v
     

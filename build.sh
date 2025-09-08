@@ -11,7 +11,7 @@ else
 fi
 
 echo "Fetching data from api..."
-python -m run fetching
+python -m run fetch
 echo "Fetching complete"
 
 echo "Building Faiss index..."
